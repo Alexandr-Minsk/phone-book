@@ -3,13 +3,10 @@
         <div class="modal-mask">
             <div class="modal-wrapper">
                 <div class="modal-container">
-
                     <div class="modal-header">
                         <slot name="header">
-
                         </slot>
                     </div>
-
                     <div class="modal-body">
                         <form action="">
                             <div class="form-group row">
@@ -22,13 +19,12 @@
                             </div>
                         </form>
                     </div>
-
                     <div class="modal-footer">
                         <slot name="footer">
                             <button class="btn btn-default" @click="$emit('close')">
                                 Cancel
                             </button>
-                            <button class="btn btn-danger" @click="doSave">
+                            <button class="btn btn-danger" @click="saveEntry">
                                 Save
                             </button>
                         </slot>
@@ -41,7 +37,7 @@
 
 <script>
     export default {
-        name: 'EditPhone',
+        name: 'EditEntry',
         props: {
             data: Object
         },
@@ -52,7 +48,7 @@
             }
         },
         methods: {
-            doSave () {
+            saveEntry () {
                 let newData = { number: this.number, name: this.name };
                 if (Number.isInteger(this.data.idx)) {
                     newData.idx = this.data.idx;

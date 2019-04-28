@@ -4,15 +4,15 @@
     <td>{{ phoneRecord.number }}</td>
     <td>{{ phoneRecord.name }}</td>
     <td>
-      <button type="button" class="btn btn-warning" v-on:click="doEdit">Edit</button>
-      <button type="button" class="btn btn-danger" v-on:click="doDelete">Delete</button>
+      <button type="button" class="btn btn-warning" v-on:click="editEntry">Edit</button>
+      <button type="button" class="btn btn-danger" v-on:click="deleteEntry">Delete</button>
     </td>
   </tr>
 </template>
 
 <script>
 export default {
-  name: 'PhoneItem',
+  name: 'PhoneEntry',
   props: {
     idx: Number,
     phoneRecord: Object
@@ -24,10 +24,10 @@ export default {
     }
   },
   methods: {
-    doDelete () {
+    deleteEntry () {
       this.$emit('delete', this.idx)
     },
-    doEdit () {
+    editEntry () {
       this.$emit('edit', { idx:this.idx, number: this.number, name: this.name})
     }
   },
